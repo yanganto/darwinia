@@ -269,6 +269,13 @@ impl treasury::Trait for Runtime {
 	type Event = Event;
 }
 
+//impl grandpa::Trait for Runtime {
+//	type SessionKey = AuthorityId;
+//	type Log = Log;
+//	type Event = Event;
+//}
+
+
 construct_runtime!(
 	pub enum Runtime with Log(InternalLog: DigestItem<Hash, AuthorityId, AuthoritySignature>) where
 		Block = Block,
@@ -289,6 +296,7 @@ construct_runtime!(
 		Session: session,
 		Staking: staking,
 		Treasury: treasury::{Module, Call, Storage, Event<T>},
+//		Grandpa: grandpa,
 	}
 );
 

@@ -1,5 +1,5 @@
 [package]
-name = "evo-treasury"
+name = "evo-contract"
 version = "0.1.0"
 authors = ["hammeWang <dsw0602@foxmail.com>"]
 edition = "2018"
@@ -13,18 +13,17 @@ parity-codec = { version = "3.0", default-features = false }
 parity-codec-derive = { version = "3.0", default-features = false }
 substrate-keyring = { git = "https://github.com/paritytech/substrate", optional = true }
 substrate-primitives = { git = "https://github.com/paritytech/substrate", default-features = false }
-rstd = { package ="sr-std",  git = "https://github.com/paritytech/substrate", default-features = false }
-primitives = { package ="sr-primitives",  git = "https://github.com/paritytech/substrate", default-features = false }
+sr-std = { git = "https://github.com/paritytech/substrate", default-features = false }
+sr-primitives = { git = "https://github.com/paritytech/substrate", default-features = false }
 srml-support = { git = "https://github.com/paritytech/substrate", default-features = false }
-system = { package ="srml-system",  git = "https://github.com/paritytech/substrate", default-features = false }
-balances = { package ="srml-balances",  git = "https://github.com/paritytech/substrate", default_features = false }
-timestamp = { package ="srml-timestamp",  git = "https://github.com/paritytech/substrate", default_features = false }
+srml-system = { git = "https://github.com/paritytech/substrate", default-features = false }
+srml-balances = { git = "https://github.com/paritytech/substrate", default_features = false }
+srml-timestamp = { git = "https://github.com/paritytech/substrate", default_features = false }
 evo-support = {path = "../support", default_features = false}
-runtime_io = { package = "sr-io", git = "https://github.com/paritytech/substrate", default-features = false }
-session = { package ="srml-session", git = "https://github.com/paritytech/substrate", default-features = false }
-consensus = { package ="srml-consensus", path = '../consensus', default-features = false }
+
 
 [dev-dependencies]
+runtime_io = { package = "sr-io", git = "https://github.com/paritytech/substrate", default-features = false }
 ring = { package = "evo-ring", path = "../token/ring"}
 kton = { package = "evo-kton", path = "../token/kton"}
 
@@ -37,13 +36,10 @@ std = [
     "parity-codec/std",
     "parity-codec-derive/std",
     "substrate-primitives/std",
-    "rstd/std",
+    "sr-std/std",
     "srml-support/std",
-    "balances/std",
-    "primitives/std",
-    "system/std",
-    "timestamp/std",
-    "session/std",
-    "consensus/std",
+    "srml-balances/std",
+    "sr-primitives/std",
+    "srml-system/std",
+    "srml-timestamp/std",
 ]
-

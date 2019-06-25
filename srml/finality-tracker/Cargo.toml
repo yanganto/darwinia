@@ -1,0 +1,32 @@
+[package]
+name = "srml-finality-tracker"
+version = "1.0.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+edition = "2018"
+
+[dependencies]
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+parity-codec = { version = "3.3", default-features = false }
+inherents = { package = "substrate-inherents", git = 'https://github.com/paritytech/substrate.git', default-features = false }
+rstd = { package = "sr-std", git = 'https://github.com/paritytech/substrate.git', default-features = false }
+primitives = { package = "sr-primitives", git = 'https://github.com/paritytech/substrate.git', default-features = false }
+srml-support = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
+srml-system = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
+
+[dev-dependencies]
+substrate-primitives = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
+sr-io = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
+lazy_static = "1.0"
+parking_lot = "0.7"
+
+[features]
+default = ["std"]
+std = [
+	"serde/std",
+	"parity-codec/std",
+	"rstd/std",
+	"srml-support/std",
+	"primitives/std",
+	"srml-system/std",
+	"inherents/std",
+]

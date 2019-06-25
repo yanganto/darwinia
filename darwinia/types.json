@@ -1,0 +1,18 @@
+{
+  "TokenBalance": "u128",
+  "Currency": "u128",
+  "CurrencyOf": "u128",
+  "RewardBalance": "u128",
+  "RewardBalanceOf": "u128",
+  "DepositInfo": {
+    "month": "Moment",
+    "start_at": "Moment",
+    "value": "CurrencyOf",
+    "unit_interest": "u64",
+    "claimed": "bool"
+  },
+  "Deposit": {
+    "total_deposit": "CurrencyOf",
+    "deposit_list": "Vec<DepositInfo>"
+  }
+}

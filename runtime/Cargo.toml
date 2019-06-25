@@ -9,6 +9,8 @@ evo-sdr = {path = "../srml/token/sdr",  default-features = false}
 evo-ring = {path = "../srml/token/ring",  default-features = false}
 evo-kton = {path = "../srml/token/kton",  default-features = false}
 evo-contract = {path = "../srml/contract",  default-features = false}
+grandpa = { package = 'srml-grandpa', path = "../srml/grandpa",  default-features = false}
+finality-tracker = { package = 'srml-finality-tracker', path = "../srml/finality-tracker",  default-features = false}
 
 [dependencies.aura]
 default_features = false
@@ -27,7 +29,7 @@ package = 'substrate-client'
 
 [dependencies.consensus]
 default_features = false
-git = 'https://github.com/paritytech/substrate.git'
+path = '../srml/consensus'
 package = 'srml-consensus'
 
 [dependencies.consensus-aura]
@@ -38,6 +40,7 @@ package = 'substrate-consensus-aura-primitives'
 [dependencies.consensus_authorities]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'substrate-consensus-authorities'
 
 [dependencies.executive]
@@ -132,6 +135,7 @@ default_features = false
 git = 'https://github.com/paritytech/substrate.git'
 package = 'sr-version'
 
+
 [features]
 default = ['std']
 std = [
@@ -162,5 +166,7 @@ std = [
     'consensus-aura/std',
     "session/std",
     "staking/std",
+    "grandpa/std",
+    "finality-tracker/std",
     'offchain-primitives/std',
 ]
