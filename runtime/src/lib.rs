@@ -11,7 +11,6 @@ extern crate evo_sdr as sdr;
 extern crate evo_ring as ring;
 extern crate evo_kton as kton;
 extern crate evo_contract as contract;
-extern crate support;
 
 #[cfg(feature = "std")]
 use serde_derive::{Serialize, Deserialize};

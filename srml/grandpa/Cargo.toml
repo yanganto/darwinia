@@ -7,13 +7,13 @@ edition = "2018"
 [dependencies]
 serde = { version = "1.0", optional = true, features = ["derive"] }
 parity-codec = { version = "3.3", default-features = false, features = ["derive"] }
-substrate-primitives = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
-substrate-finality-grandpa-primitives = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
-rstd = { package = "sr-std", git = 'https://github.com/paritytech/substrate.git', default-features = false }
-primitives = { package = "sr-primitives", git = 'https://github.com/paritytech/substrate.git', default-features = false }
-srml-support = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
-system = { package = "srml-system", git = 'https://github.com/paritytech/substrate.git', default-features = false }
-session = { package = "srml-session", git = 'https://github.com/paritytech/substrate.git', default-features = false }
+substrate-primitives = { git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
+substrate-finality-grandpa-primitives = { git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
+rstd = { package = "sr-std", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
+primitives = { package = "sr-primitives", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
+srml-support = { git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
+system = { package = "srml-system", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
+session = { package = "srml-session", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
 consensus = { package = "srml-consensus", path = '../consensus', default-features = false }
 finality-tracker = { package = "srml-finality-tracker", path = "../finality-tracker", default-features = false }
 

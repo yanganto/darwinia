@@ -35,6 +35,7 @@ package = 'srml-consensus'
 [dependencies.consensus-aura]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'substrate-consensus-aura-primitives'
 
 [dependencies.consensus_authorities]
@@ -46,16 +47,19 @@ package = 'substrate-consensus-authorities'
 [dependencies.executive]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-executive'
 
 [dependencies.indices]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-indices'
 
 [dependencies.offchain-primitives]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'substrate-offchain-primitives'
 
 [dependencies.parity-codec]
@@ -66,6 +70,7 @@ version = '3.3'
 [dependencies.primitives]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'substrate-primitives'
 
 [dependencies.rstd]
@@ -98,26 +103,31 @@ version = '1.0'
 [dependencies.sudo]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-sudo'
 
 [dependencies.support]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-support'
 
 [dependencies.system]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-system'
 
 [dependencies.timestamp]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-timestamp'
 
 [dependencies.session]
 default_features = false
 git = 'https://github.com/paritytech/substrate.git'
+rev = "3e8a5e0e3e174139a1c6db447bf6cae5f900000f"
 package = 'srml-session'
 
 [dependencies.staking]
@@ -165,7 +175,6 @@ std = [
     'safe-mix/std',
     'consensus-aura/std',
     "session/std",
-    "staking/std",
     "grandpa/std",
     "finality-tracker/std",
     'offchain-primitives/std',

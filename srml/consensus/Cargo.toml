@@ -11,11 +11,11 @@ substrate-primitives = { git = 'https://github.com/paritytech/substrate.git', re
 inherents = { package = "substrate-inherents", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
 rstd = { package = "sr-std",git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
 primitives = { package = "sr-primitives", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
-srml-support = { git = 'https://github.com/paritytech/substrate.git', default-features = false }
+srml-support = { git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
 system = { package = "srml-system", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e", default-features = false }
 
 [dev-dependencies]
-runtime_io = { package = "sr-io", git = 'https://github.com/paritytech/substrate.git' }
+runtime_io = { package = "sr-io", git = 'https://github.com/paritytech/substrate.git', rev = "3e8a5e0e" }
 
 [features]
 default = ["std"]
