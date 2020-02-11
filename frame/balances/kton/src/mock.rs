@@ -38,15 +38,15 @@ impl_outer_origin! {
 
 #[cfg(feature = "with-fee")]
 thread_local! {
-	pub(crate) static EXISTENTIAL_DEPOSIT: RefCell<Balance> = RefCell::new(0);
-	static TRANSFER_FEE: RefCell<Balance> = RefCell::new(0);
-	static CREATION_FEE: RefCell<Balance> = RefCell::new(0);
-}
-#[cfg(not(feature = "with-fee"))]
-thread_local! {
 	pub(crate) static EXISTENTIAL_DEPOSIT: RefCell<Balance> = RefCell::new(1 * COIN);
 	static TRANSFER_FEE: RefCell<Balance> = RefCell::new(1 * MILLI);
 	static CREATION_FEE: RefCell<Balance> = RefCell::new(1 * MILLI);
+}
+#[cfg(not(feature = "with-fee"))]
+thread_local! {
+	pub(crate) static EXISTENTIAL_DEPOSIT: RefCell<Balance> = RefCell::new(0);
+	static TRANSFER_FEE: RefCell<Balance> = RefCell::new(0);
+	static CREATION_FEE: RefCell<Balance> = RefCell::new(0);
 }
 
 pub struct ExistentialDeposit;
