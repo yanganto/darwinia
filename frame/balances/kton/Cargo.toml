@@ -40,4 +40,4 @@ std = [
 	"darwinia-support/std",
 ]
 # test
-transfer-fee = ["std"]
+with-fee = ["std"]
