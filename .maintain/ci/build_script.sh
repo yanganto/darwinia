@@ -25,6 +25,6 @@ case $TARGET in
 	"wasm")
 		rustup target add wasm32-unknown-unknown
 		WASM_BUILD_TYPE=release cargo build --locked "$@"
-		echo -e "\e[0;32m +------------+ \n | Build Pass | \n +------------+ \e[0m"
+		echo -e "\e[0;32m +------------+ \n\e[0;32m | Build Pass | \n\e[0;32m +------------+ \e[0m"
 		;;
 esac
