@@ -24,7 +24,12 @@ before_install:
     - df -h
 
 script:
-    - .maintain/ci/script.sh
+    # The stage of building  
+    - .maintain/ci/build_script.sh
+    # The stage of test darwinia customize model
+    - .maintain/ci/darwinia_test_script.sh
+    # The stage of test all modules including substrates
+    - .maintain/ci/test_script.sh
 
 after_script:
     # Check how much free disk space left after the build
