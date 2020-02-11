@@ -12,21 +12,13 @@ case $TARGET in
 
 	# Without WASM, build then test
 	"native")
-		SKIP_WASM_BUILD=1 cargo test -p darwinia-kton "$@"
-		echo -e "\e[0;32m +------------+ \n\e[0;32m  | Kton  Pass | \n\e[0;32m  +------------+ \e[0m"
-		SKIP_WASM_BUILD=1 cargo test -p darwinia-ring "$@"
-		echo -e "\e[0;32m +------------+ \n\e[0;32m  | Ring  Pass | \n\e[0;32m  +------------+ \e[0m"
-		SKIP_WASM_BUILD=1 cargo test -p darwinia-staking "$@"
-		echo -e "\e[0;32m +------------+ \n\e[0;32m  | Staking OK | \n\e[0;32m  +------------+ \e[0m"
+		SKIP_WASM_BUILD=1 cargo test -p darwinia-$1
+		echo -e "\e[0;32m +------------+ \n\e[0;32m  | $1  Pass | \n\e[0;32m  +------------+ \e[0m"
 		;;
 
 	# With WASM, build then test
 	"wasm")
-		WASM_BUILD_TYPE=release cargo test -p darwinia-kton "$@"
-		echo -e "\e[0;32m +------------+ \n\e[0;32m  | Kton  Pass | \n\e[0;32m  +------------+ \e[0m"
-		WASM_BUILD_TYPE=release cargo test -p darwinia-ring "$@"
-		echo -e "\e[0;32m +------------+ \n\e[0;32m  | Ring  Pass | \n\e[0;32m  +------------+ \e[0m"
-		WASM_BUILD_TYPE=release cargo test -p darwinia-staking "$@"
-		echo -e "\e[0;32m +------------+ \n\e[0;32m  | Staking OK | \n\e[0;32m  +------------+ \e[0m"
+		WASM_BUILD_TYPE=release cargo test -p darwinia-$1
+		echo -e "\e[0;32m +------------+ \n\e[0;32m  | $1  Pass | \n\e[0;32m  +------------+ \e[0m"
 		;;
 esac
