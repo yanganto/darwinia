@@ -1,6 +1,8 @@
+use darwinia_ring as ring;
 use frame_support::traits::Get;
 use frame_support::weights::Weight;
 use frame_support::{impl_outer_origin, parameter_types};
+use pallet_balances::Balance;
 use sp_core::H256;
 use sp_io;
 use sp_runtime::{
@@ -120,7 +122,7 @@ impl ExtBuilder {
 		self.vesting = vesting;
 		self
 	}
-	pub fn build(self) -> runtime_io::TestExternalities {
+	pub fn build(self) -> sp_io::TestExternalities {
 		let mut t = system::GenesisConfig::default().build_storage::<Test>().unwrap();
 		GenesisConfig::<Test> {
 			balances: vec![
