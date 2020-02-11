@@ -2,7 +2,7 @@ use darwinia_ring as ring;
 use frame_support::traits::Get;
 use frame_support::weights::Weight;
 use frame_support::{impl_outer_origin, parameter_types};
-use pallet_balances::Balance;
+// use pallet_balances::Balance;
 use sp_core::H256;
 use sp_io;
 use sp_runtime::{
@@ -29,6 +29,8 @@ pub type Timestamp = timestamp::Module<Test>;
 #[cfg(feature = "transfer-fee")]
 pub type Ring = ring::Module<Test>;
 pub type Kton = Module<Test>;
+
+type Balance = u128;
 
 pub const NANO: Balance = 1;
 pub const MICRO: Balance = 1_000 * NANO;
