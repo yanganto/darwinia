@@ -1,11 +1,17 @@
-use sr_primitives::{
+use frame_support::traits::Get;
+use frame_support::weights::Weight;
+use frame_support::{impl_outer_origin, parameter_types};
+use sp_core::H256;
+use sp_io;
+use sp_runtime::{
 	testing::Header,
-	traits::{BlakeTwo256, IdentityLookup},
-	weights::Weight,
+	traits::{
+		BlakeTwo256,
+		//ConvertInto,
+		IdentityLookup,
+	},
 	Perbill,
 };
-use substrate_primitives::H256;
-use support::{impl_outer_origin, parameter_types};
 
 use crate::*;
 
