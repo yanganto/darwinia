@@ -1,4 +1,4 @@
-use frame_support::{assert_err, assert_ok, traits::Currency};
+use frame_support::{assert_err, assert_noop, assert_ok, traits::Currency};
 
 use crate::{mock::*, *};
 use darwinia_support::{LockIdentifier, NormalLock, WithdrawLock, WithdrawReasons};
@@ -60,41 +60,39 @@ mod without_transfer_fee {
 		});
 	}
 
-	// TODO: make this test case pass
-	// #[test]
-	// fn transfer_should_fail() {
-	// 	ExtBuilder::default().vesting(true).build().execute_with(|| {
-	// 		let _ = Kton::deposit_creating(&777, 1);
-	// 		assert_err!(
-	// 			Kton::transfer(Origin::signed(666), 777, 50),
-	// 			"balance too low to send value",
-	// 		);
+	#[test]
+	fn transfer_should_fail() {
+		ExtBuilder::default().vesting(true).build().execute_with(|| {
+			let _ = Kton::deposit_creating(&777, 1);
+			assert_noop!(
+				Kton::transfer(Origin::signed(666), 777, 50),
+				Error::<Test>::InsufficientBalance,
+			);
 
-	// 		let _ = Kton::deposit_creating(&666, Balance::max_value());
-	// 		assert_err!(
-	// 			Kton::transfer(Origin::signed(777), 666, 1),
-	// 			"destination balance too high to receive value",
-	// 		);
+			let _ = Kton::deposit_creating(&666, Balance::max_value());
+			assert_noop!(Kton::transfer(Origin::signed(777), 666, 1), Error::<Test>::Overflow,);
 
-	// 		assert_err!(
-	// 			Kton::transfer(Origin::signed(2), 777, Kton::vesting_balance(&2)),
-	// 			"vesting balance too high to send value",
-	// 		);
-	// 		Kton::set_lock(
-	// 			ID_1,
-	// 			&777,
-	// 			WithdrawLock::Normal(NormalLock {
-	// 				amount: Balance::max_value(),
-	// 				until: Moment::max_value(),
-	// 			}),
-	// 			WithdrawReasons::all(),
-	// 		);
-	// 		assert_err!(
-	// 			Kton::transfer(Origin::signed(777), 1, 1),
-	// 			"account liquidity restrictions prevent withdrawal",
-	// 		);
-	// 	});
-	// }
+			// NOTE: different behavior with before system
+			// assert_err!(
+			// 	Kton::transfer(Origin::signed(2), 777, Kton::vesting_balance(&2)),
+			// 	"vesting balance too high to send value",
+			// );
+			assert_ok!(Kton::transfer(Origin::signed(2), 777, Kton::vesting_balance(&2)));
+			Kton::set_lock(
+				ID_1,
+				&777,
+				WithdrawLock::Normal(NormalLock {
+					amount: Balance::max_value(),
+					until: Moment::max_value(),
+				}),
+				WithdrawReasons::all(),
+			);
+			assert_noop!(
+				Kton::transfer(Origin::signed(777), 1, 1),
+				Error::<Test>::LiquidityRestrictions,
+			);
+		});
+	}
 
 	// #[test]
 	// fn set_lock_should_work() {
