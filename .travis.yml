@@ -25,11 +25,19 @@ before_install:
 
 script:
     # The stage of building  
+    - echo 'Building...' && echo -en 'travis_fold:start:script.1\\r'
     - .maintain/ci/build_script.sh
+    - echo -en 'travis_fold:end:script.1\\r'
+
     # The stage of test darwinia customize model
+    - echo 'Test Darwinia Modules...' && echo -en 'travis_fold:start:script.2\\r'
     - .maintain/ci/darwinia_test_script.sh
+    - echo -en 'travis_fold:end:script.2\\r'
+
     # The stage of test all modules including substrates
+    - echo 'Test All Modules...' && echo -en 'travis_fold:start:script.3\\r'
     - .maintain/ci/test_script.sh
+    - echo -en 'travis_fold:end:script.3\\r'
 
 after_script:
     # Check how much free disk space left after the build
