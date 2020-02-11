@@ -62,37 +62,39 @@ mod without_transfer_fee {
 
 	#[test]
 	fn transfer_should_fail() {
-		ExtBuilder::default().vesting(true).build().execute_with(|| {
-			let _ = Kton::deposit_creating(&777, 1);
-			assert_noop!(
-				Kton::transfer(Origin::signed(666), 777, 50),
-				Error::<Test>::InsufficientBalance,
-			);
+		ExtBuilder::default()
+			.vesting(true)
+			.monied(true)
+			.build()
+			.execute_with(|| {
+				let _ = Kton::deposit_creating(&777, 1);
+				assert_noop!(
+					Kton::transfer(Origin::signed(666), 777, 50),
+					Error::<Test>::InsufficientBalance,
+				);
 
-			let _ = Kton::deposit_creating(&666, Balance::max_value());
-			assert_noop!(Kton::transfer(Origin::signed(777), 666, 1), Error::<Test>::Overflow,);
+				let _ = Kton::deposit_creating(&666, Balance::max_value());
+				assert_noop!(Kton::transfer(Origin::signed(777), 666, 1), Error::<Test>::Overflow);
 
-			// TODO: check this behavior is acceptable or not
-			// assert_err!(
-			// 	Kton::transfer(Origin::signed(2), 777, Kton::vesting_balance(&2)),
-			// 	"vesting balance too high to send value",
-			// );
-			assert_ok!(Kton::transfer(Origin::signed(2), 777, Kton::vesting_balance(&2)));
+				assert_err!(
+					Kton::transfer(Origin::signed(2), 777, Kton::vesting_balance(&2)),
+					Error::<Test>::VestingBalance,
+				);
 
-			Kton::set_lock(
-				ID_1,
-				&777,
-				WithdrawLock::Normal(NormalLock {
-					amount: Balance::max_value(),
-					until: Moment::max_value(),
-				}),
-				WithdrawReasons::all(),
-			);
-			assert_noop!(
-				Kton::transfer(Origin::signed(777), 1, 1),
-				Error::<Test>::LiquidityRestrictions,
-			);
-		});
+				Kton::set_lock(
+					ID_1,
+					&777,
+					WithdrawLock::Normal(NormalLock {
+						amount: Balance::max_value(),
+						until: Moment::max_value(),
+					}),
+					WithdrawReasons::all(),
+				);
+				assert_noop!(
+					Kton::transfer(Origin::signed(777), 1, 1),
+					Error::<Test>::LiquidityRestrictions,
+				);
+			});
 	}
 
 	#[test]
