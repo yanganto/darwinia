@@ -21,13 +21,14 @@ jobs:
     - stage: Check & Prepare
       script: .maintain/ci/fmt_script.sh
 
-    - stage: Build
-      env: RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=native
-      script: .maintain/ci/build_script.sh
-
-    - stage: Build
-      env: RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=wasm
-      script: .maintain/ci/build_script.sh
+    # These parts are moved to in house ci server
+    # - stage: Build
+    #   env: RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=native
+    #   script: .maintain/ci/build_script.sh
+    #   
+    # - stage: Build
+    #   env: RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=wasm
+    #   script: .maintain/ci/build_script.sh
 
     - stage: Darwinia Test
       env:  KTON RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=native
@@ -61,7 +62,7 @@ jobs:
       env: ETHOFFCHAIN RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=native
       script: .maintain/ci/darwinia_test_script.sh eth-offchain
 
-    # over the time limitation, so we comment this
+    # This part is moved to in house ci server
     # - stage: Overall Test 
     #   env: RUST_TOOLCHAIN=nightly-2020-02-07 TARGET=native
     #   script: .maintain/ci/test_script.sh
